@@ -5,6 +5,7 @@ import com.kotlinserver.lab.domain.post.dto.PostResDto
 import com.kotlinserver.lab.domain.post.entity.Post
 import com.kotlinserver.lab.domain.post.enum.IsDeleted.*
 import com.kotlinserver.lab.domain.post.repository.PostRepository
+import com.kotlinserver.lab.utils.slack.SlackService
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,13 +13,14 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class PostService(
-    private var postRepository: PostRepository
+    private var postRepository: PostRepository,
+    private var slackService: SlackService
 ) {
-
 
     @Transactional
     fun createPost(postReqDto: PostReqDto): PostResDto {
         val post: Post = postRepository.save(postReqDto.dtoToEntity())
+        slackService.sendMessage("${post.title} 라는 제목의 글이 작성되었습니다.")
         return PostResDto.entityToDto_v2(post)
     }
 
