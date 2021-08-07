@@ -1,0 +1,26 @@
+
+server:
+  port: 8090
+
+
+spring:
+  jpa:
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/board
+    username: root
+    password: password
+
+  logging:
+    level:
+      org.hibernate:
+        SQL: DEBUG # to logger
+        type.descriptor.sql.BasicBinder: DEBUG
+      org.springframework.jdbc.core:
+        JdbcTemplate: DEBUG
+        StatementCreatorUtils: DEBUG
