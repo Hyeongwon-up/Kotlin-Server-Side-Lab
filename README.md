@@ -1,4 +1,4 @@
-# Kotlin-Server-Side-Lab
+# Kotlin-Server-Side-Lab 🙄
 ## 브랜치 확인!!
 
 ### branch: 1.Simple_Post_CRUD
