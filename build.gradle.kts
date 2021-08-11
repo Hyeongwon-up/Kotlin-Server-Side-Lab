@@ -42,6 +42,9 @@ dependencies {
     //slack
     implementation("com.slack.api:slack-api-client:1.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    //kotest 추가.
+    runtimeOnly("io.kotest:kotest-assertions-core-jvm:4.6.1")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.1")
 }
 
 tasks.withType<KotlinCompile> {
