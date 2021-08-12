@@ -33,7 +33,7 @@ class PostService(
                 id = null,
                 title = "삭제된 글 입니다.",
                 contents = "삭제된 내용입니다.",
-                isDeleted = null,
+                isDeleted = Y,
                 view = null)
         }
         post.addView()
