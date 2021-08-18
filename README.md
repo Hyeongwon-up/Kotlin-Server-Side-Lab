@@ -1,5 +1,5 @@
 # Kotlin-Server-Side-Lab 🙄👻
-## 브랜치 확인!!
+## 브랜치 확인 -> !!
 
 ### branch: 1.Simple_Post_CRUD
 [[SpringBoot + Kotlin + JPA] 간단한 게시글 CRUD REST Api 구현.](https://brotherone.tistory.com/8)
