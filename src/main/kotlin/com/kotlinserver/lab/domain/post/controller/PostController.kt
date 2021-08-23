@@ -8,6 +8,7 @@ import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.web.bind.annotation.*
 
+
 @Api(value = "PostController")
 @RestController
 class PostController(private var postService: PostService) {
@@ -22,7 +23,8 @@ class PostController(private var postService: PostService) {
     @ApiOperation(value = "게시글Id로 조회")
     @GetMapping("/post/{postId}")
     fun readPost(@PathVariable postId: Long): PostResDto {
-        return postService.readPost(postId)
+        val post = postService.readPost(postId)
+        return post
     }
 
     @ApiOperation(value = "모든 게시글 조회")
