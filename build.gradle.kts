@@ -34,6 +34,21 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    //swagger 추가.
+    implementation("io.springfox:springfox-swagger2:2.9.2")
+    implementation("io.springfox:springfox-swagger-ui:2.9.2")
+
+    //slack
+    implementation("com.slack.api:slack-api-client:1.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+
+    //kotest 추가.
+    runtimeOnly("io.kotest:kotest-assertions-core-jvm:4.6.1")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.1")
+
+    //Mockk
+    testImplementation("io.mockk:mockk:1.12.0")
 }
 
 tasks.withType<KotlinCompile> {
