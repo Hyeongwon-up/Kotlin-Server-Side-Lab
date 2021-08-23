@@ -6,23 +6,30 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 private val logger = KotlinLogging.logger {  }
 
 
 @RestControllerAdvice
-class GlobalExceptionHandler {
+class GlobalExceptionHandler: ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(EntityNotFoundException::class)
     fun handleEntityNotFoundException(ex: EntityNotFoundException): ResponseEntity<ErrorResponse> {
 
-        logger.error { "EntityNotFoundException : $ex " }
         val response = ErrorResponse(ex.errorCode)
-        val result = ResponseEntity(response, HttpStatus.BAD_REQUEST)
+//
+//        logger.info { "$result" }
+//
+//        return
 
-        logger.info { "$result" }
+//        return toResponseEntity(ex.errorCode)
 
-        return result
+//        return ResponseEntity<>(response, HttpStatus.BAD_REQUEST)
+        logger.error { "#@#@#@#EntityNotFoundException : ${response.toString()} " }
+        print(response.toString())
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response)
     }
 
 }

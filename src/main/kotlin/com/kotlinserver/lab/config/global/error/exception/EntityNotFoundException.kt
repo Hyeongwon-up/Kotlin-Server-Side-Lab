@@ -6,8 +6,4 @@ class EntityNotFoundException(
      val errorCode: ErrorCode
 ): RuntimeException() {
 
-    constructor(message: String, errorCode: ErrorCode): this(errorCode){
-
-    }
-    
 }

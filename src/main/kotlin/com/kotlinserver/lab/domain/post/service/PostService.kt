@@ -35,7 +35,7 @@ class PostService(
     fun readPost(postId: Long): PostResDto {
         logger.info { "start" }
         val post: Post = postRepository.findByIdOrNull(postId)
-            ?: throw EntityNotFoundException("없는 게시글", ErrorCode.ENTITY_NOT_FOUND)
+            ?: throw EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND)
 
 
 
