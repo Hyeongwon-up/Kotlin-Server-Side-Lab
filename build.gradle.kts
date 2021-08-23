@@ -49,6 +49,10 @@ dependencies {
 
     //Mockk
     testImplementation("io.mockk:mockk:1.12.0")
+
+    //log
+    implementation("io.github.microutils:kotlin-logging:2.0.10")
+
 }
 
 tasks.withType<KotlinCompile> {

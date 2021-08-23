@@ -1,15 +1,22 @@
 package com.kotlinserver.lab.domain.post.service
 
+import com.kotlinserver.lab.config.global.error.ErrorCode
+import com.kotlinserver.lab.config.global.error.exception.EntityNotFoundException
 import com.kotlinserver.lab.domain.post.dto.PostReqDto
 import com.kotlinserver.lab.domain.post.dto.PostResDto
 import com.kotlinserver.lab.domain.post.entity.Post
 import com.kotlinserver.lab.domain.post.enum.IsDeleted.*
 import com.kotlinserver.lab.domain.post.repository.PostRepository
 import com.kotlinserver.lab.utils.slack.SlackService
+import mu.KotlinLogging
+import org.springframework.data.repository.findByIdOrNull
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
+import kotlin.collections.ArrayList
 
+private val logger = KotlinLogging.logger {  }
 
 @Service
 class PostService(
@@ -26,7 +33,13 @@ class PostService(
 
     @Transactional
     fun readPost(postId: Long): PostResDto {
-        val post: Post = postRepository.findById(postId).get();
+        logger.info { "start" }
+        val post: Post = postRepository.findByIdOrNull(postId)
+            ?: throw EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND)
+
+
+
+        logger.info { "ㄱㄷ" }
 
         if(post.isDeleted == Y) {
             return PostResDto(
@@ -38,7 +51,10 @@ class PostService(
         }
         post.addView()
         postRepository.save(post)
-        return PostResDto.entityToDto_v2(post);
+
+        logger.info { "여기까지온다고?" }
+
+        return PostResDto.entityToDto_v2(post)
     }
 
     @Transactional(readOnly = true)
