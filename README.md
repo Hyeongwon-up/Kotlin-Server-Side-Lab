@@ -13,5 +13,7 @@
 [[Springboot + Kotlin + JPA] Exception Handling by Kotlin](https://brotherone.tistory.com/10)
 
 
-### branch: 5.JWT
+### branch: 5.RelationShips
+[[Kotlin + Springboot + JPA] Entity 연관관계 by Kotlin](https://brotherone.tistory.com/11)
+
 
