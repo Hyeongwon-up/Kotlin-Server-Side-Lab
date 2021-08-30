@@ -14,6 +14,6 @@
 
 
 ### branch: 5.RelationShips
-[[Kotlin + Springboot + JPA] Entity 연관관계 by Kotlin](https://brotherone.tistory.com/11)
+[[Kotlin + Springboot + JPA] Entity 연관관계 (지연로딩, OrphanRemoval 확인) by Kotlin](https://brotherone.tistory.com/11)
 
 
