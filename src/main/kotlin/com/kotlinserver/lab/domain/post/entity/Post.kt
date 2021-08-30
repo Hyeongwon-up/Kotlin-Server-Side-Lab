@@ -1,5 +1,7 @@
 package com.kotlinserver.lab.domain.post.entity
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.kotlinserver.lab.domain.comment.entity.Comment
 import com.kotlinserver.lab.domain.post.dto.PostReqDto
 import com.kotlinserver.lab.domain.post.enum.IsDeleted
 import org.hibernate.annotations.ColumnDefault
@@ -22,12 +24,16 @@ class Post(
     var view: Long = 0,
 
     @Enumerated(EnumType.STRING)
-    var isDeleted: IsDeleted = IsDeleted.N
+    var isDeleted: IsDeleted = IsDeleted.N,
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "post", cascade = [CascadeType.ALL], orphanRemoval = true)
+    private val comment: Set<Comment> = HashSet<Comment>()
 
 ) {
 
     fun addView() {
-        this.view ++
+        this.view++
     }
 
     fun updatePost(postReqDto: PostReqDto) {

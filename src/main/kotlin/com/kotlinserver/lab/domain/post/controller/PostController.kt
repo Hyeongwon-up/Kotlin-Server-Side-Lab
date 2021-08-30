@@ -3,6 +3,7 @@ package com.kotlinserver.lab.domain.post.controller
 
 import com.kotlinserver.lab.domain.post.dto.PostReqDto
 import com.kotlinserver.lab.domain.post.dto.PostResDto
+import com.kotlinserver.lab.domain.post.repository.PostRepository
 import com.kotlinserver.lab.domain.post.service.PostService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 
 @Api(value = "PostController")
 @RestController
-class PostController(private var postService: PostService) {
+class PostController(private final val postService: PostService,) {
 
 
     @ApiOperation(value = "게시글 생성")
@@ -43,6 +44,12 @@ class PostController(private var postService: PostService) {
     @DeleteMapping("/post/{postId}")
     fun deletePost(@PathVariable postId: Long): String {
         return postService.deletePost(postId)
+    }
+
+    @DeleteMapping("/deleteForce/{postId}")
+    fun deleteForcePost(@PathVariable postId: Long): String {
+        postService.deleteForcePost(postId)
+        return "delete"
     }
 
 

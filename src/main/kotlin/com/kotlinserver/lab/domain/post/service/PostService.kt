@@ -11,6 +11,7 @@ import com.kotlinserver.lab.utils.slack.SlackService
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.web.bind.annotation.PathVariable
 
 
 @Service
@@ -72,6 +73,12 @@ class PostService(
         var post: Post = postRepository.findById(postId).get()
         post.isDeleted = Y
         return "delete success"
+    }
+
+    @Transactional
+    fun deleteForcePost(@PathVariable postId: Long) {
+        val post = postRepository.findById(postId).get()
+        postRepository.delete(post)
     }
 
 
